@@ -10,5 +10,13 @@ export const mockDataInfos = [
     {
       id: 3,
       field: "E-mail"
+    },
+    {
+      id: 4,
+      field: "Estado"
+    },
+    {
+      id: 5,
+      field: "Observacao"
     }
   ]

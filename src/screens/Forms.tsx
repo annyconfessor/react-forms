@@ -1,16 +1,24 @@
 import React from "react";
 
-import Input from './../components/Input/index.tsx'
+import Input from "../components/Input/Input.tsx";
 
-import { Container, Wrapper } from "./styles.tsx";
+import { Container, Wrapper, Box, WrapperButtons, TextWrapper, ResetButton, SendButton } from "./styles.tsx";
 
 import { mockDataInfos } from "./mocks.ts";
 
 const Forms = () => {
   return (
+    <>
     <Container>
-      {mockDataInfos.map((item) => (<><Wrapper key={item.id}>{item.field}<Input /></Wrapper></>))}
+      <Box>
+          {mockDataInfos.map((item) => (<><Wrapper key={item.id}><TextWrapper>{item.field}</TextWrapper><Input /></Wrapper></>))}
+        <WrapperButtons>
+          <ResetButton>Limpar</ResetButton>
+          <SendButton>Enviar</SendButton>
+        </WrapperButtons>
+      </Box>
     </Container>
+    </>
   );
 }
 

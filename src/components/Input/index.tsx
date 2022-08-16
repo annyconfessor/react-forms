@@ -1,14 +1,7 @@
-import React from "react";
-import styled from 'styled-components'
+import Input from "./Input";
 
-const InputStyled = styled.input`
-  
-`
+export { Input }
 
-const Input = () => {
-    return (
-      <InputStyled />
-    );
-};
+export default Input
 
-export default Input;
+export * from './Input'
