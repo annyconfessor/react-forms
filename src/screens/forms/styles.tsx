@@ -31,19 +31,3 @@ export const WrapperButtons = styled.div`
   justify-content: space-between;
   width: 50%;
 `
-
-export const ResetButton = styled.button`
-  background-color: red;
-  border-radius: none;
-  width: 65px;
-  height: 27px;
-  color: white;
-`
-
-export const SendButton = styled.button`
-  background-color: green;
-  border-radius: none;
-  width: 65px;
-  height: 27px;
-  color: white;
-`
