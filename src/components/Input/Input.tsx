@@ -3,16 +3,13 @@ import React from "react";
 import { StyledInput } from './styles.tsx';
 
 type InputProps = {
-  name: string,
-  lastName: string,
-  email: string,
-  region: string,
-  text?: string,
+  value: string;
+  onchange(): void;
 }
 
-const Input = ({ name, lastName, email, region, text }: InputProps) => {
+const Input = ({ value, onchange }: InputProps) => {
     return (
-      <StyledInput name={name} lastName={lastName} email={email} region={region} text={text} />
+      <StyledInput value={value} onChange={onchange} />
     );
 };
 

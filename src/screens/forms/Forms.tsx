@@ -10,10 +10,15 @@ import { mockDataInfos } from "./mocks.ts";
 
 const Forms = () => {
 const [modal, setModal] = useState(false);
+const [value, setValue] = useState(``);
 
   const handleModal = () => {
-    console.log("entrou no modal")
     setModal(true);
+  }
+
+  const handleValue = (e) => {
+    const event = e.target.value
+    setValue(event)
   }
 
   return (
@@ -24,7 +29,12 @@ const [modal, setModal] = useState(false);
             <>
               <Wrapper key={item.id}>
                 <TextWrapper>{item.field}</TextWrapper>
-                <Input />
+                  <Input 
+                    type="text"
+                    name="textInput"
+                    value={value} 
+                    onchange={handleValue}
+                  />
               </Wrapper>
             </>
           ))}
