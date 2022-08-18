@@ -1,4 +1,4 @@
-export const mockAlertInfos = [
+export const mockModalInfos = [
     {
       id: 1,
       title: "Nome completo",
