@@ -7,18 +7,14 @@ import Modal from "../modal/Modal.tsx";
 import { Container, Wrapper, Box, WrapperButtons, TextWrapper } from "./styles.tsx";
 
 import { mockDataInfos } from "./mocks.ts";
+import useLocalstorage from "../../hooks/useLocalstorage.tsx";
 
 const Forms = () => {
 const [modal, setModal] = useState(false);
-const [value, setValue] = useState(``);
+const [text, setText] = useLocalstorage("name", "initialValue")
 
   const handleModal = () => {
     setModal(true);
-  }
-
-  const handleValue = (e) => {
-    const event = e.target.value
-    setValue(event)
   }
 
   return (
@@ -30,10 +26,10 @@ const [value, setValue] = useState(``);
               <Wrapper key={item.id}>
                 <TextWrapper>{item.field}</TextWrapper>
                   <Input 
+                    key={item.id}
                     type="text"
                     name="textInput"
-                    value={value} 
-                    onchange={handleValue}
+                    onchange={(e) => setText(e.target.value)}
                   />
               </Wrapper>
             </>
