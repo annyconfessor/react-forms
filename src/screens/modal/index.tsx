@@ -1,7 +1,26 @@
-import Modal from './Modal.tsx'
+import React from "react";
 
-export { Modal }
+import { Container, Box, WrapperTexts } from "./styles.tsx";
 
-export default Modal
+import { mockModalInfos } from "./mocks.ts";
 
-export * from './Modal.tsx'
+type ModalProps = {
+  name: string,
+  lastName: string,
+  email: string,
+  region: string,
+  text?: string,
+}
+
+const Modal = ({ name, lastName, email, region, text }: ModalProps) => {
+  return (
+    <Container>
+      <Box>
+      <h3>Alert</h3>
+        {mockModalInfos.map((item) => (<><WrapperTexts key={item.id}><h3>{item.title}</h3>{item.field}</WrapperTexts></>))}
+      </Box>
+    </Container>
+  );
+}
+
+export default Modal;

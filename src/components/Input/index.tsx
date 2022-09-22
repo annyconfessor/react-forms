@@ -1,7 +1,16 @@
-import Input from "./Input";
+import React from "react";
 
-export { Input }
+import { StyledInput } from './styles.tsx';
 
-export default Input
+type InputProps = {
+  value: string;
+  onchange(): void;
+}
 
-export * from './Input'
+const Input = ({ value, onchange }: InputProps) => {
+    return (
+      <StyledInput value={value} onChange={onchange} />
+    );
+};
+
+export default Input;

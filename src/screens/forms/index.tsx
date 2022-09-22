@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-import Input from "../../components/Input/Input.tsx";
-import Button from "../../components/Button/Button.tsx";
-import Modal from "../modal/Modal.tsx";
+import Input from "../../components/Input/index.tsx";
+import Button from "../../components/Button/index.tsx";
+import Modal from "../modal/index.tsx";
 
 import { Container, Wrapper, Box, WrapperButtons, TextWrapper } from "./styles.tsx";
 
