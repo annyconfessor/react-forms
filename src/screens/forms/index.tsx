@@ -21,6 +21,7 @@ const [text, setText] = useLocalstorage("name", "initialValue")
     <>
     <Container>
       <Box>
+          <div><h2>React-forms</h2></div>
           {mockDataInfos.map((item) => (
             <>
               <Wrapper key={item.id}>
