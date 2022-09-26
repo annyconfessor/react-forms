@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Input from "../../components/Input/index.tsx";
 import Button from "../../components/Button/index.tsx";
 import Modal from "../modal/index.tsx";
+import "./styles.css"
 
 import { Container, Wrapper, Box, WrapperButtons, TextWrapper } from "./styles.tsx";
 
@@ -37,10 +38,13 @@ const [text, setText] = useLocalstorage("name", "initialValue")
           ))}
         <WrapperButtons>
           <Button variant="reset">Limpar</Button>
-          <Button variant="send" href="abrir-modal" onClick={handleModal}>Enviar</Button>
+          {/* TODO: adicionar a variacao de link button no componente de button */}
+          <a href="#abrirModal"><Button variant="send">Enviar</Button></a>
         </WrapperButtons>
       </Box>
-      {modal && <Modal />}
+      <div className="modal" id="abrirModal">
+        <Modal />
+      </div>
     </Container>
     </>
   );
