@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 
 import { StyledButton } from './styles.tsx'
 
-import ButtonProps from './types.ts'
+import { ButtonProps } from './types'
 
 const Button: FC<ButtonProps> = (props) => {
   const { variant, ...rest } = props
