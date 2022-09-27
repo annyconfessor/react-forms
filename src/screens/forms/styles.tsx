@@ -25,7 +25,6 @@ export const Wrapper = styled.div`
   flex-direction: column;
 `
 
-
 export const WrapperButtons = styled.div`
   display: flex;
   justify-content: space-between;
