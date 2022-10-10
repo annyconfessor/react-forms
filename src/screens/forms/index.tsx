@@ -15,31 +15,31 @@ const Forms = () => {
   const [location, setLocation] = useState("location")
   const [note, setNote] = useState("note")
 
-  const handleName = (e) => {
+  const handleName = (e: any) => {
     e.preventDefault()
 
     setName(e.target.value)
   }
 
-  const handleLastName = (e) => {
+  const handleLastName = (e: any) => {
     e.preventDefault()
 
     setLastName(e.target.value)
   }
 
-  const handleEmail = (e) => {
+  const handleEmail = (e: any) => {
     e.preventDefault()
 
     setEmail(e.target.value)
   }
 
-  const handleLocation = (e) => {
+  const handleLocation = (e: any) => {
     e.preventDefault()
 
     setLocation(e.target.value)
   }
 
-  const handleNote = (e) => {
+  const handleNote = (e: any) => {
     e.preventDefault()
 
     setNote(e.target.value)
