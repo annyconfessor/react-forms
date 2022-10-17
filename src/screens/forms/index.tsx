@@ -1,110 +1,63 @@
 import React, { useState } from "react";
 
-import Input from "../../components/Input/index.tsx";
-import Button from "../../components/Button/index.tsx";
-import Modal from "../modal/index.tsx";
-import "./styles.css"
+import Input from "../../components/Input";
+import Button from "../../components/Button";
+import DataModal from "../data-modal";
+import Select from "../../components/Select";
 
-import { Container, Wrapper, Box, WrapperButtons, TextWrapper } from "./styles.tsx";
+import { Container, Wrapper, Box, Form, WrapperButtons, Label } from "./styles";
 
+type Data = {
+  id: number,
+  field: string,
+  value: string
+}
 
-const Forms = () => {
-  const [name, setName] = useState("name")
-  const [lastName, setLastName] = useState("lastName")
-  const [email, setEmail] = useState("email")
-  const [location, setLocation] = useState("location")
-  const [note, setNote] = useState("note")
+type FormType = {
+  defaultData: Data[]
+}
 
-  const handleName = (e: any) => {
-    e.preventDefault()
+const Forms = ({ defaultData }: FormType) => {
+  const [data, setData] = useState<Data[]>(defaultData)
+  const [isOpen, setIsOpen] = useState(false)
 
-    setName(e.target.value)
+  const handleData = (field: string, event: React.ChangeEvent<HTMLSelectElement>) => {
+    setData(data.map(item => {
+      if (item.field === field) return { ...item, value: event.target.value }
+      return item
+    }))
   }
 
-  const handleLastName = (e: any) => {
-    e.preventDefault()
-
-    setLastName(e.target.value)
+  const handleModalOpen = () => {
+    setIsOpen(!isOpen)
   }
-
-  const handleEmail = (e: any) => {
-    e.preventDefault()
-
-    setEmail(e.target.value)
-  }
-
-  const handleLocation = (e: any) => {
-    e.preventDefault()
-
-    setLocation(e.target.value)
-  }
-
-  const handleNote = (e: any) => {
-    e.preventDefault()
-
-    setNote(e.target.value)
-  }
-
+  
+  console.log('data: ', data)
   return (
     <>
-    <Container>
-      <Box>
-        <div><h2>React-forms</h2></div>
-        <Wrapper>
-          <TextWrapper>Name</TextWrapper>
-          <Input
-            type="text"
-            name="textInput"
-            onchange={handleName}
-          />
-        </Wrapper>
+      <Container>
+        <Box>
+          <Form name="container">
+            {data?.map((item) => {
+              return (
+                <Wrapper key={item.id}>
+                  <Label htmlFor={item.field}>{item.field}</Label>
+                  {item.field === 'Region' ? <Select /> : <Input onchange={event => handleData(item.field, event)} id={item.field} />}
+                </Wrapper>
+              )
+            }
+            )}
 
-        <Wrapper>
-          <TextWrapper>Sobrenome</TextWrapper>
-          <Input
-            type="text"
-            name="textInput"
-            onchange={handleLastName}
-          />
-        </Wrapper>
-
-        <Wrapper>
-          <TextWrapper>E-mail</TextWrapper>
-          <Input
-            type="text"
-            name="textInput"
-            onchange={handleEmail}
-          />
-        </Wrapper>
-
-        <Wrapper>
-          <TextWrapper>Estado</TextWrapper>
-          <Input
-            type="text"
-            name="textInput"
-            onchange={handleLocation}
-          />
-        </Wrapper>
-
-        <Wrapper>
-          <TextWrapper>observação</TextWrapper>
-          <Input
-            type="text"
-            name="textInput"
-            onchange={handleNote}
-          />
-        </Wrapper>
-        
-        <WrapperButtons>
-          <Button variant="reset">Limpar</Button>
-          {/* TODO: adicionar a variacao de link button no componente de button */}
-          <a href="#abrirModal"><Button variant="send">Enviar</Button></a>
-        </WrapperButtons>
-      </Box>
-      <div className="modal" id="abrirModal">
-        <Modal name={name} lastName={lastName} email={email} region={location} note={note}/>
-      </div>
-    </Container>
+            <WrapperButtons>
+              <Button type="button" variant="reset">Limpar</Button>
+              <Button type="button" variant="send" onClick={handleModalOpen}>Enviar</Button>
+            </WrapperButtons>
+          </Form>
+        </Box>
+        {isOpen && (
+          <DataModal data={data} onClose={handleModalOpen} />
+        )}
+      </Container>
     </>
   );
 }

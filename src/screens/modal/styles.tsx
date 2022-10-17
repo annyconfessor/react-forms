@@ -1,21 +1,17 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  display: flex;
-  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.1);
+`
+
+export const Content = styled.div`
   border: 1px solid black;
-  width: 80%;
-`
-
-export const Box = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  width: 90%;
-  margin: 20px;
-`
-
-export const WrapperTexts = styled.div`
-  display: flex;
-  flex-direction: column;
+  background: white;
+  margin: 25px;
+  padding: 15px;
 `

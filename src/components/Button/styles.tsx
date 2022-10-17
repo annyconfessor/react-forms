@@ -4,7 +4,7 @@ import {
     variant,
   } from 'styled-system'
 
-export const StyledButton = styled.button`
+export const StyledButton = styled.button.attrs(() => {})`
   ${() => css`
     display: flex;
     align-items: center;
