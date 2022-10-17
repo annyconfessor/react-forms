@@ -5,25 +5,34 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: start;
-  height: 100vh;
-`
-
-export const Box = styled.div`
+  `
+  
+  export const Box = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   width: 90%;
-  height: 70%;
+  height: 60vh;
 `
 
-export const TextWrapper = styled.div`
-  margin-bottom: 15px;
+export const Form = styled.form`
+  display: flex;
+  flex: 1;
+  margin-top: 50px;
+  flex-direction: column;
+  align-items: center;
 `
 
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  width: 80%;
+  margin: 10px 0;
 `
+export const Label = styled.label`
+margin-bottom: 10px;
+`
+
 
 export const WrapperButtons = styled.div`
   display: flex;

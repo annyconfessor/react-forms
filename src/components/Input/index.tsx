@@ -1,15 +1,14 @@
-import React from "react";
-
-import { StyledInput } from './styles.tsx';
+import { StyledInput } from './styles';
 
 type InputProps = {
-  value: string;
-  onchange(): void;
+  value?: (e: any) => void
+  onchange: (e: any) => void;
+  id: string
 }
 
-const Input = ({ value, onchange }: InputProps) => {
+const Input = ({ value, onchange, id }: InputProps) => {
     return (
-      <StyledInput value={value} onChange={onchange} />
+      <StyledInput value={value} onChange={onchange} id={id} />
     );
 };
 

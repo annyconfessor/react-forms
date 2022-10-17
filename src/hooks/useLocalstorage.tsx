@@ -1,6 +1,5 @@
 import { useMemo } from 'react'
 
-
 const useLocalStorage = (key: string, defaultValue: string) => {
 
   const localStoredValue = window.localStorage.getItem(key)

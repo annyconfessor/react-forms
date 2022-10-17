@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-import { StyledButton } from './styles.tsx'
+import { StyledButton } from './styles'
 
 import { ButtonProps } from './types'
 

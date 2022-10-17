@@ -1,51 +1,28 @@
 import React from "react";
 
-import { Container, Box, WrapperTexts } from "./styles.tsx";
+import { Container, Content } from "./styles";
 
-import Button from "./../../components/Button/index.tsx"
+import Button from "./../../components/Button"
 
-type ModalProps = {
-  name: string,
-  lastName: string,
-  email: string,
-  region: string,
-  note?: string,
+export type ModalProps = {
+  title?: string,
+  children: React.ReactElement,
+  onClose?: () => void
 }
 
-const Modal = ({ name, lastName, email, region, note }: ModalProps) => {
-
+const Modal = ({ title, children, onClose }: ModalProps) => {
+  const handleClose = () => {
+    onClose && onClose()
+  }
   return (
     <Container>
-      <Box>
-        <h3>Alert</h3>
-        <WrapperTexts>
-          <h3>Nome</h3>
-          <p>{name}</p>
-        </WrapperTexts>
-
-        <WrapperTexts>
-          <h3>Sobrenome</h3>
-          <p>{lastName}</p>
-        </WrapperTexts>
-
-        <WrapperTexts>
-          <h3>Email</h3>
-          <p>{email}</p>
-        </WrapperTexts>
-
-        <WrapperTexts>
-          <h3>Regiao</h3>
-          <p>{region}</p>
-        </WrapperTexts>
-
-        <WrapperTexts>
-          <h3>Observacao</h3>
-          <p>{note}</p>
-        </WrapperTexts>
-        <a href="closeModal"><Button variant="send">Fechar</Button></a>
-      </Box>
+      <Content>
+        {title ? <h3>{title}</h3> : null}
+        {children}
+        <Button variant="send" onClick={handleClose}>Fechar</Button>
+      </Content>
     </Container>
   );
 }
 
-export default Modal;
+export default Modal
