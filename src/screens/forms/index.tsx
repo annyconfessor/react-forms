@@ -32,7 +32,6 @@ const Forms = ({ defaultData }: FormType) => {
     setIsOpen(!isOpen)
   }
   
-  console.log('dataaaaaaa: ', data)
   return (
     <>
       <Container>

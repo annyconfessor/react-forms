@@ -63,8 +63,28 @@ describe('Forms', () => {
     
     const nameInput = screen.getByLabelText('Name') 
     
-    fireEvent.change(nameInput, { target: { value: 'Anny' } })
+    fireEvent.change(nameInput, { target: { value: 'User' } })
 
-    expect(hasInputValue(nameInput, "Anny")).toBe(true)
+    // check if the user enter some input
+    expect(hasInputValue(nameInput, 'User')).toBe(true)
+  })
+
+  it("should render button correctly", () => {
+    render(<Forms defaultData={DEFAULT_DATA} />)
+
+    screen.getByRole("button", { name: "Limpar"})
+    screen.getByRole("button", { name: "Enviar" })
+  })
+
+  it("sould click on send button and calls handleModalOpen", () => {
+    const handleModalOpen = jest.fn()
+
+    render(<Forms defaultData={DEFAULT_DATA} />)
+
+    const SendButton = screen.getByRole("button", { name: "Enviar" })
+
+    fireEvent.click(SendButton)
+
+    expect(handleModalOpen).toHaveBeenCalledTimes(1)
   })
 })

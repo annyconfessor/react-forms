@@ -37,7 +37,6 @@ const DEFAULT_DATA = [
   }
 ]
 
-console.log('default data: ', DEFAULT_DATA)
 const App = () => (
     <Forms defaultData={DEFAULT_DATA} />
 )
