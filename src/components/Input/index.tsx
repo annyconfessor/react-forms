@@ -2,14 +2,12 @@ import { StyledInput } from './styles';
 
 type InputProps = {
   value?: (e: any) => void
-  onchange: (e: any) => void;
-  id: string
+  onChange: (e: any) => void;
+  id: number | string
 }
 
-const Input = ({ value, onchange, id }: InputProps) => {
-    return (
-      <StyledInput value={value} onChange={onchange} id={id} />
-    );
-};
+const Input = ({ value, onChange, id }: InputProps) => (
+  <StyledInput value={value} onChange={onChange} id={id} />
+);
 
 export default Input;

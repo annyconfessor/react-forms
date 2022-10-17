@@ -32,7 +32,6 @@ const Forms = ({ defaultData }: FormType) => {
     setIsOpen(!isOpen)
   }
   
-  console.log('data: ', data)
   return (
     <>
       <Container>
@@ -41,8 +40,8 @@ const Forms = ({ defaultData }: FormType) => {
             {data?.map((item) => {
               return (
                 <Wrapper key={item.id}>
-                  <Label htmlFor={item.field}>{item.field}</Label>
-                  {item.field === 'Region' ? <Select /> : <Input onchange={event => handleData(item.field, event)} id={item.field} />}
+                  <Label htmlFor={`input-name-${item.id}`}>{item.field}</Label>
+                  {item.field === 'Region' ? <Select /> : <Input onChange={event => handleData(item.field, event)} id={`input-name-${item.id}`} />}
                 </Wrapper>
               )
             }

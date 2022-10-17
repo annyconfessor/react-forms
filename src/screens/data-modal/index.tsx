@@ -18,7 +18,6 @@ interface IDataModel {
 }
 
 const DataModal = ({ data, onClose }: IDataModel) => {
-  console.log('data-modal: ', data)
   return(
     <Modal title="Dados do formulario" onClose={onClose}>
       <List>

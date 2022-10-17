@@ -1,10 +1,9 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import Forms from '..'
 
-it("Text must be in the document", () => {
-
+describe('Forms', () => {
   const DEFAULT_DATA = [
     {
       id: 1,
@@ -32,23 +31,60 @@ it("Text must be in the document", () => {
       value: ''
     } 
   ]
-  
-  render(<Forms defaultData={DEFAULT_DATA} />)
-  
-  const name = screen.getByText('Name')
-  const email = screen.getByText('Email')
-  const lastName = screen.getByText('Sobrenome')
-  const note = screen.getByText('Note')
 
-  expect(name).toBeInTheDocument()
-  expect(lastName).toBeInTheDocument()
-  expect(email).toBeInTheDocument()
-  expect(note).toBeInTheDocument()
+  it("should render elements correctly.", () => {
+    render(<Forms defaultData={DEFAULT_DATA} />)
+    
+    const name = screen.getByText('Name')
+    const email = screen.getByText('Email')
+    const lastName = screen.getByText('Sobrenome')
+    const note = screen.getByText('Note')
+    const nameInput = screen.getByLabelText('Name')
+    const emailInput = screen.getByLabelText('Email')
+    const lastnameInput = screen.getByLabelText('Sobrenome')
+    const noteInput = screen.getByLabelText('Note')
 
-  // digitar qualquer nesse campo
+    expect(name).toBeInTheDocument()
+    expect(lastName).toBeInTheDocument()
+    expect(email).toBeInTheDocument()
+    expect(note).toBeInTheDocument()
+    expect(nameInput).toBeInTheDocument()
+    expect(emailInput).toBeInTheDocument()
+    expect(lastnameInput).toBeInTheDocument()
+    expect(noteInput).toBeInTheDocument()
+  })
 
-  // checar se foi digitado corretamente qualquer coisa
+  it("should change correctly the inputs values.", () => {
+    render(<Forms defaultData={DEFAULT_DATA} />)
 
-  // e no final, clicar no botão de enviar e checar se a função handleModalOpen foi executada
-  
+    function hasInputValue(e, inputValue) {
+      return screen.getByDisplayValue(inputValue) === e
+    }
+    
+    const nameInput = screen.getByLabelText('Name') 
+    
+    fireEvent.change(nameInput, { target: { value: 'User' } })
+
+    // check if the user enter some input
+    expect(hasInputValue(nameInput, 'User')).toBe(true)
+  })
+
+  it("should render button correctly", () => {
+    render(<Forms defaultData={DEFAULT_DATA} />)
+
+    screen.getByRole("button", { name: "Limpar"})
+    screen.getByRole("button", { name: "Enviar" })
+  })
+
+  it("sould click on send button and calls handleModalOpen", () => {
+    const handleModalOpen = jest.fn()
+
+    render(<Forms defaultData={DEFAULT_DATA} />)
+
+    const SendButton = screen.getByRole("button", { name: "Enviar" })
+
+    fireEvent.click(SendButton)
+
+    expect(handleModalOpen).toHaveBeenCalledTimes(1)
+  })
 })
