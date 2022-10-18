@@ -19,7 +19,7 @@ interface IDataModel {
 
 const DataModal = ({ data, onClose }: IDataModel) => {
   return(
-    <Modal title="Dados do formulario" onClose={onClose}>
+    <Modal title="Dados do formulario" onClose={onClose} data-testid="data-modal">
       <List>
         {data?.map((item) => {
           return(

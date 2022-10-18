@@ -49,7 +49,7 @@ const Forms = ({ defaultData }: FormType) => {
 
             <WrapperButtons>
               <Button type="button" variant="reset">Limpar</Button>
-              <Button type="button" variant="send" onClick={handleModalOpen}>Enviar</Button>
+              <Button type="button" variant="send" onClick={handleModalOpen} className="button-class">Enviar</Button>
             </WrapperButtons>
           </Form>
         </Box>

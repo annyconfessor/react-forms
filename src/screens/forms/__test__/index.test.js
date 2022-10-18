@@ -76,15 +76,16 @@ describe('Forms', () => {
     screen.getByRole("button", { name: "Enviar" })
   })
 
-  it("sould click on send button and calls handleModalOpen", () => {
-    const handleModalOpen = jest.fn()
-
+  it("should click on send button and open data modal", () => {
     render(<Forms defaultData={DEFAULT_DATA} />)
+    
+    const button = screen.getByText('Enviar')
 
-    const SendButton = screen.getByRole("button", { name: "Enviar" })
+    fireEvent.click(button)
 
-    fireEvent.click(SendButton)
-
-    expect(handleModalOpen).toHaveBeenCalledTimes(1)
+    const modal = screen.getByTestId('data-modal')
+    
+    expect(modal).toBeInTheDocument()
+    
   })
 })
