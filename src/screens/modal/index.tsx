@@ -10,12 +10,12 @@ export type ModalProps = {
   onClose?: () => void
 }
 
-const Modal = ({ title, children, onClose }: ModalProps) => {
+const Modal = ({ title, children, onClose, ...props }: ModalProps) => {
   const handleClose = () => {
     onClose && onClose()
   }
   return (
-    <Container>
+    <Container {...props}>
       <Content>
         {title ? <h3>{title}</h3> : null}
         {children}
