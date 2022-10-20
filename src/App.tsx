@@ -1,14 +1,5 @@
 import Forms from './screens/forms'
 
-/*
-
-- test
-- usar axios para pegar os campos dinamicamente
-
-
-*/
-
-// Ele não deve existir. Os dados precisam vir do mock.
 const DEFAULT_DATA = [
   {
     id: 1,
