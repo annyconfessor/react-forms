@@ -5,6 +5,8 @@ import Button from "../../components/Button";
 import DataModal from "../data-modal";
 import Select from "../../components/Select";
 
+import { singin } from "../../services/api";
+
 import { Container, Wrapper, Box, Form, WrapperButtons, Label } from "./styles";
 
 type Data = {
@@ -31,6 +33,11 @@ const Forms = ({ defaultData }: FormType) => {
   const handleModalOpen = () => {
     setIsOpen(!isOpen)
   }
+
+  const onSubmit = async () => {
+    const res = await singin()
+    console.log('res', res)
+  }
   
   return (
     <>
@@ -49,7 +56,7 @@ const Forms = ({ defaultData }: FormType) => {
 
             <WrapperButtons>
               <Button type="button" variant="reset">Limpar</Button>
-              <Button type="button" variant="send" onClick={handleModalOpen} className="button-class">Enviar</Button>
+              <Button type="button" variant="send" onClick={onSubmit} className="button-class">Enviar</Button>
             </WrapperButtons>
           </Form>
         </Box>
