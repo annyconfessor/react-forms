@@ -12,6 +12,7 @@ if (process.env.NODE_ENV === 'development') {
   worker.start()
 }
 
+// aqui, a instancia criada vai ser passada para o setupInterceptors
 setupInterceptors(instance)
 
 const root = ReactDOM.createRoot(
