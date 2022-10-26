@@ -1,4 +1,4 @@
-import Forms from './screens/forms'
+import Forms from './components/forms'
 
 const DEFAULT_DATA = [
   {

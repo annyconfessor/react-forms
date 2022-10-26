@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 
-import Input from "../../components/Input";
-import Button from "../../components/Button";
+import Input from "../Input";
+import Button from "../Button";
 import DataModal from "../data-modal";
-import Select from "../../components/Select";
+import Select from "../Select";
 
 import { singin } from "../../services/api";
 
-import { Container, Wrapper, Box, Form, WrapperButtons, Label } from "./styles";
-import Text from "../../components/Text";
+import { Container, Wrapper, Box, Form, WrapperButtons } from "./styles";
+import Text from "../Text";
 
 type Data = {
   id: number,
