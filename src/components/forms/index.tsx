@@ -9,6 +9,7 @@ import { singin } from "../../services/api";
 
 import { Container, Wrapper, Box, Form, WrapperButtons } from "./styles";
 import Text from "../Text";
+import TextBox from "../TextBox";
 
 type Data = {
   id: number,
@@ -45,10 +46,11 @@ const Forms = ({ defaultData }: FormType) => {
       <Container>
         <Box>
           <Form name="container">
+          <TextBox />
             {data?.map((item) => {
               return (
                 <Wrapper key={item.id}>
-                  <Text name={`input-name-${item.id}`}>{item.field}</Text>
+                  <Text>{item.field}</Text>
                   {item.field === 'Region' ? <Select /> : <Input onChange={event => handleData(item.field, event)} id={`input-name-${item.id}`} />}
                 </Wrapper>
               )

@@ -1,8 +1,8 @@
-import { StyledText } from "./styles";
+import { StyledText } from "./styles"
 
 type TextProps = {
   children: string
-  name: string
+  name?: string
 }
 
 const Text = ({children, name}: TextProps) => {
