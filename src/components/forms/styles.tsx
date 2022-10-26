@@ -29,10 +29,6 @@ export const Wrapper = styled.div`
   width: 80%;
   margin: 10px 0;
 `
-export const Label = styled.label`
-margin-bottom: 10px;
-`
-
 
 export const WrapperButtons = styled.div`
   display: flex;

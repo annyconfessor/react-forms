@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 
-import Input from "../../components/Input";
-import Button from "../../components/Button";
+import Input from "../Input";
+import Button from "../Button";
 import DataModal from "../data-modal";
-import Select from "../../components/Select";
+import Select from "../Select";
 
 import { singin } from "../../services/api";
 
-import { Container, Wrapper, Box, Form, WrapperButtons, Label } from "./styles";
+import { Container, Wrapper, Box, Form, WrapperButtons } from "./styles";
+import Text from "../Text";
 
 type Data = {
   id: number,
@@ -47,7 +48,7 @@ const Forms = ({ defaultData }: FormType) => {
             {data?.map((item) => {
               return (
                 <Wrapper key={item.id}>
-                  <Label htmlFor={`input-name-${item.id}`}>{item.field}</Label>
+                  <Text name={`input-name-${item.id}`}>{item.field}</Text>
                   {item.field === 'Region' ? <Select /> : <Input onChange={event => handleData(item.field, event)} id={`input-name-${item.id}`} />}
                 </Wrapper>
               )
@@ -56,7 +57,7 @@ const Forms = ({ defaultData }: FormType) => {
 
             <WrapperButtons>
               <Button type="button" variant="reset">Limpar</Button>
-              <Button type="button" variant="send" onClick={onSubmit} className="button-class">Enviar</Button>
+              <Button type="button" variant="send" onClick={handleModalOpen} className="button-class">Enviar</Button>
             </WrapperButtons>
           </Form>
         </Box>
