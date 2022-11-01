@@ -8,7 +8,7 @@ const Select = ({ onChange }: SelectProps) => {
 
   return(
     <StyledSelect onChange={onChange}>
-      {data.map((item, index) => <option key={index}>{item.option}</option>)}
+      {data?.map((item, index) => <option key={index}>{item.option}</option>)}
     </StyledSelect>
   )
 }

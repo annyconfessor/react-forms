@@ -1,7 +1,7 @@
 import { StyledText } from "./styles"
 
 type TextProps = {
-  children: string
+  children: string | string[]
   name?: string
 }
 

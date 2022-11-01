@@ -1,61 +1,74 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Input from "../Input";
 import Button from "../Button";
-import DataModal from "../data-modal";
 import Select from "../Select";
 
-import { singin } from "../../services/api";
+import { signin } from "../../services/api";
 
 import { Container, Wrapper, Box, Form, WrapperButtons } from "./styles";
 import Text from "../Text";
 import TextBox from "../TextBox";
 
 type Data = {
-  id: number,
-  field: string,
-  value: string
+  uuidobjectclass: string,
+  uuid: string,
+  des: string,
+  complement: string,
+  fields: {
+    firstname: {
+      uuid: string,
+      coumnjson: string,
+      type: string,
+      displaytext: {
+        des: string
+      }
+      readonly: boolean
+    }
+  }
 }
 
-type FormType = {
-  defaultData: Data[]
-}
-
-const Forms = ({ defaultData }: FormType) => {
-  const [data, setData] = useState<Data[]>(defaultData)
+const Forms = () => {
+  const [dataa, setData] = useState<any>({ fields: {} })
   const [isOpen, setIsOpen] = useState(false)
 
-  const handleData = (field: string, event: React.ChangeEvent<HTMLSelectElement>) => {
-    setData(data.map(item => {
-      if (item.field === field) return { ...item, value: event.target.value }
-      return item
-    }))
-  }
+  const items = Object.keys(dataa.fields)
 
   const handleModalOpen = () => {
     setIsOpen(!isOpen)
   }
 
-  const onSubmit = async () => {
-    const res = await singin()
-    console.log('res', res)
-  }
-  
+  useEffect(() => {
+    const handleResult = async () => {
+      const result = await signin()
+      
+      const res = result?.data?.data?.metadata?.objectclass
+      setData(res)
+    }
+    
+    handleResult()
+    
+  }, [])
+
+  const renderFields = () =>
+    items?.map((item) => {
+      const data = dataa.fields[item]
+
+      return (
+        <Wrapper key={data.uuid}>
+          <Text>{data?.display_text?.des}</Text>
+          {data.type === 'SELECT' ? <Select /> : <Input onChange={e => console.log(e)} id={`input-name-${data.uuid}`} />}
+        </Wrapper>
+      )
+    })
+
   return (
     <>
       <Container>
         <Box>
           <Form name="container">
           <TextBox />
-            {data?.map((item) => {
-              return (
-                <Wrapper key={item.id}>
-                  <Text>{item.field}</Text>
-                  {item.field === 'Region' ? <Select /> : <Input onChange={event => handleData(item.field, event)} id={`input-name-${item.id}`} />}
-                </Wrapper>
-              )
-            }
-            )}
+            {renderFields()}
 
             <WrapperButtons>
               <Button type="button" variant="reset">Limpar</Button>
@@ -63,9 +76,9 @@ const Forms = ({ defaultData }: FormType) => {
             </WrapperButtons>
           </Form>
         </Box>
-        {isOpen && (
-          <DataModal data={data} onClose={handleModalOpen} />
-        )}
+        {/* {isOpen && (
+          <DataModal data={dataa} onClose={handleModalOpen} />
+        )} */}
       </Container>
     </>
   );

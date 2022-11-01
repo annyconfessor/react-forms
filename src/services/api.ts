@@ -1,6 +1,6 @@
 import client from "./axios"
 
-export const singin = () => {
+export const signin = () => {
     return client.post('/signin')
 }
 
