@@ -9,6 +9,7 @@ import { signin } from "../../services/api";
 import { Container, Wrapper, Box, Form, WrapperButtons } from "./styles";
 import Text from "../Text";
 import TextBox from "../TextBox";
+import DataModal from "../data-modal";
 
 type Data = {
   uuidobjectclass: string,
@@ -76,9 +77,9 @@ const Forms = () => {
             </WrapperButtons>
           </Form>
         </Box>
-        {/* {isOpen && (
-          <DataModal data={dataa} onClose={handleModalOpen} />
-        )} */}
+        {isOpen && (
+          <DataModal data={dataa} onClose={handleModalOpen}/>
+        )}
       </Container>
     </>
   );
